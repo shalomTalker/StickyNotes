@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todo-list</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+</head>
+<body>
+	<div class="tile container">
+		<div class="row">
+			
+			<h2>My Stack Board</h2>
+			<form class="col-md-6 content-toDo form-group">
+				<div class="textarea col-md-6">
+					<label for="textarea">Text Note</label>
+					<textarea placeholder="type your stuff here"class="form-control" name="textarea" id="input-toDos"></textarea>
+				</div>
+				<div class="col-md-12" id="invalid_Alert_text"></div>
+				<div class="date col-md-6">
+					<label>Date</label>
+					<input class="form-control" type="datetime-local" name="date">
+				</div>
+				<div class="col-md-12" id="invalid_Alert_date"></div>
+				<input class="btn btn-default submit col-md-4" type="submit" name="submit_btn" value="Add">
+			</form>
+		</div>
+			<div class="row">
+				<div class="col-md-12 list-reminder-note"></div>
+			</div>
+	</div>
+	
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
