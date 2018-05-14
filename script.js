@@ -22,19 +22,26 @@ function buildClassList(arrNotes)
 editText();
 function editText()
 {
-    var x = document.querySelectorAll(".note > p");
-    for (var i = 0; i < x.length; i++) 
+    var textForEdit = document.querySelectorAll(".note > p");
+    for (var i = 0; i < textForEdit.length; i++) 
     {
-        x[i].addEventListener('click', function(event) 
+        textForEdit[i].addEventListener('dblclick', function(event) 
         {
-            var dd = event.target;
-            console.log(event);
-            var previous = dd.textContent;
-            console.log(typeof previous);
-            dd.innerHTML = '<textarea type="text" class="col-md-7"></textarea>';
-            console.log(dd.value);
-            dd.value = previous; 
+            var eventDiv = event.target;
+            if (eventDiv.nodeName !== 'P') {
+                return false;
+            }
 
+            var previous = eventDiv.textContent;
+            eventDiv.innerHTML = '<textarea type="text" class="col-md-7"></textarea><button type="button">✎</button>';
+            eventDiv.querySelector('textarea').value = previous; 
+            var editBtn = document.querySelector('button')
+            editBtn.addEventListener('click' , function(event) {
+                var changes = checkText(eventDiv.querySelector('textarea').value);
+                eventDiv.innerHTML = '<p></p>';
+
+                eventDiv.textContent = changes;
+            })
         }) 
     }
 }
@@ -134,6 +141,7 @@ console.log(textValue);
         // document.querySelector('textarea').value = '';
         alertText.innerHTML = '';
         // textValue = true;
+        console.log(textValue)
     } else {
         if (textValue.length <= 1) {
             var noText = document.createElement('bold');
